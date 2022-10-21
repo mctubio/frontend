@@ -1,0 +1,43 @@
+.columnas {
+  display: flex;
+}
+
+col_1 {
+  margin-left: 10px;
+  /* width: 48%; */
+}
+
+.turnos {
+  /* width: 48%; */
+  display: flex;
+}
+
+.turnos figure {
+  margin: 0;
+  position: relative;
+}
+
+.turnos .turnos_presenciales img {
+  width: 250px;
+  margin: 18px 5px;
+  border-radius: 5px;
+}
+
+.turnos .turnos_otros img {
+  width: 250px;
+  margin: 18px 5px;
+  border-radius: 5px;
+}
+
+.turnos figure figcaption {
+  width: auto;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  background: rgb(0, 0, 0);
+  position: absolute;
+  bottom: 25px;
+  left: 15px;
+}

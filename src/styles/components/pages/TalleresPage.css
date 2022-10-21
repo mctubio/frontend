@@ -1,0 +1,27 @@
+.taller_imagenes {
+  margin: 8px;
+}
+
+.taller_imagenes .imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.imagenes img {
+  width: 27%;
+  border: 0.5px solid #9968b69a;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: 0.3em;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-right: 2%;
+}
+
+.imagenes img:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  transform: scale(1.5);
+  padding: 0;
+  border: solid black;
+}
