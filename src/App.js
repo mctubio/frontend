@@ -30,15 +30,11 @@ function App() {
           <Route path="informacion" element={<InformacionPage />} />
           <Route path="talleres" element={<TalleresPage />} />
           <Route path="turnos" element={<TurnosPage />} />
-        </Routes>
-      </BrowserRouter>
+        </Routes>  
+        </BrowserRouter>
+        <Footer/>
+      </div>
+      );
+      }
 
-      <Footer />
-    </div>
-
-    
-  );
-}
-
-
-export default App;
+      export default App;

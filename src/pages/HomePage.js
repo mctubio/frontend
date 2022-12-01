@@ -28,24 +28,18 @@ const homePage = (props) => {
           <div className="turnos_presenciales">
             <figure>
               <img src="images/index/consulta_presencial.jpg" alt="presencial" />
-              <figcaption>
-                <span>Turnos Presenciales</span>
-              </figcaption>
+              
             </figure>
           </div>
 
           <div class="turnos_otros">
             <figure>
               <img src="images/index/consulta_virtual.jpg" alt="virtual" />
-              <figcaption>
-                <span>Turnos Virtuales</span>
-              </figcaption>
+            
             </figure>
             <figure>
               <img src="images/index/consulta_domicilio.jpg" alt="domicilio" />
-              <figcaption>
-                <span>Control a domicilio</span>
-              </figcaption>
+             
             </figure>
           </div>
         </div>

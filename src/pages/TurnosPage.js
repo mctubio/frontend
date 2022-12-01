@@ -1,29 +1,93 @@
-import React from 'react';
-import '../styles/components/pages/TurnosPage.css'
+import React from "react";
+import "../styles/components/pages/TurnosPage.css";
+import { useState } from "react";
+import axios from "axios";
 
 const TurnosPage = (props) => {
-    return (
-        <main className="holder">
+  const initialForm = {
+    nombre: "",
+    email: "",
+    telefono: "",
+    mensaje: "",
+  };
+
+  const [sending, setSending] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [formData, setFormData] = useState(initialForm);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((oldData) => ({
+      ...oldData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMsg("");
+    setSending(true);
+    const response = await axios.post(
+      "http://localhost:3000/api/contacto",
+      formData
+    );
+    setSending(false);
+    setMsg(response.data.message);
+    if (response.data.error === false) {
+      setFormData(initialForm);
+    }
+  };
+  return (
+    <main className="holder">
       <div className="contacto">
         <div>
           <h2>Solicitar Información</h2>
-          <form action="" method="" className="formulario">
+          <form
+            action="/contacto"
+            method="post"
+            className="formulario"
+            onSubmit={handleSubmit}
+          >
             <p>
               <label for="nombre">Nombre y Apellido</label>
-              <input type="text" name="" id="" />
+              <input
+                type="text"
+                name="nombre"
+                id=""
+                value={formData.nombre}
+                onChange={handleChange}
+              />
             </p>
             <p>
               <label for="email">e mail</label>
-              <input type="text" name="" id="" />
+              <input
+                type="text"
+                name="email"
+                id=""
+                value={formData.email}
+                onChange={handleChange}
+              />
             </p>
             <p>
               <label for="telefono">Teléfono</label>
-              <input type="text" name="" id="" />
+              <input
+                type="text"
+                name="telefono"
+                id=""
+                value={formData.telefono}
+                onChange={handleChange}
+              />
             </p>
             <p>
               <label for="mensaje">Consulta</label>
-              <textarea name="" id=""></textarea>
+              <textarea
+                name="mensaje"
+                id=""
+                value={formData.mensaje}
+                onChange={handleChange}
+              ></textarea>
             </p>
+
             <p>
               <input type="submit" value="Enviar" />
             </p>
@@ -42,8 +106,17 @@ const TurnosPage = (props) => {
           <i className="fa-brands fa-tiktok"></i>
         </div>
       </div>
+      {sending ? (
+        <p className="pMsg">
+    
+          <div class="fa-2x">
+            <i class=" fa-spin fa-solid fa-sync fa-hourglass"></i>
+          </div>
+        </p>
+      ) : null}
+      {msg ? <p className="pMsg">{msg}</p> : null}
     </main>
-    );
-}
+  );
+};
 
 export default TurnosPage;

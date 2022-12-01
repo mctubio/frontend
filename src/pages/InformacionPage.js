@@ -1,25 +1,38 @@
 import React from "react";
-import '../styles/components/pages/InformacionPage.css'
+import "../styles/components/pages/InformacionPage.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import NovedadItem from "../components/Novedades/novedadItem";
 
 const InformacionPage = (props) => {
+  const [loading, setLoading] = useState(false);
+  const [novedades, setNovedades] = useState([]);
+
+  useEffect(() => {
+    const cargarNovedades = async () => {
+      setLoading(true);
+      const response = await axios.get("http://localhost:3000/api/novedades");
+      setNovedades(response.data);
+      setLoading(false);
+    };
+    cargarNovedades();
+  }, []);
+
   return (
     <main class="holder">
-      <div class="informacion">
-        <img src="images/recursos.jpg" alt="informacion" />
-        <div class="noticia">
-          <h3>Título de la noticia</h3>
-          <h4>Frase destacada</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-            exercitationem vero hic fuga doloribus sequi minima eius natus
-            placeat accusamus. Similique saepe accusantium repudiandae quidem
-            tenetur voluptatem. Eveniet, nisi delectus. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Magni ad nostrum mollitia dolor
-            porro! Dolorum dolore, corporis laudantium distinctio modi, aliquam
-            ad dignissimos itaque quis necessitatibus aut maxime commodi totam.
-          </p>
-        </div>
-      </div>
+      {loading ? (
+        <p>Cargando</p>
+      ) : (
+        novedades.map((item) => (
+          <NovedadItem
+            key={item.id}
+            title={item.titulo}
+            subtitle={item.subtitulo}
+            imagen={item.imagen}
+            body={item.cuerpo}
+          />
+        ))
+      )}
     </main>
   );
 };

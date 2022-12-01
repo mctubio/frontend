@@ -1,6 +1,9 @@
 header {
   background-color: #9968b670;
   padding: 16px 0;
+  
+  align-content: center;
+  
 }
 
 header h1 {
@@ -8,7 +11,8 @@ header h1 {
   font-size: 35px;
   display: inline-block;
   position: relative;
-  bottom: 40px;
+  margin-top: 15px;
+
   margin-left: 15px;
 }
 
