@@ -8,10 +8,10 @@ const NovedadItem = (props) => {
       <div className="informacion">
         <div>
           <div className="noticia">
-            <div className="col-2">
+            <div className="colIzq">
               <img src={imagen} alt="imagen noticia" />
             </div>
-            <div className="col-8">
+            <div className="colDer">
               <h3>{title}</h3>
               <h4>{subtitle}</h4>
             </div>
